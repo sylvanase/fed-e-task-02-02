@@ -27,21 +27,17 @@ module.exports = {
         }
       },
       { // 处理css类文件
-        test: /\.(css|scss)$/,
+        test: /\.(css|less)$/,
         use: [
           MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              minimize: true
-            }
-          },
-          'sass-loader',
+          'css-loader',
+          'less-loader',
           'postcss-loader' // 为css3添加前缀
         ]
       },
       {
         test: /.js/, // 处理ES5
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
