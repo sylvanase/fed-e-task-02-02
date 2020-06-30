@@ -35,13 +35,23 @@ module.exports = {
           'postcss-loader' // 为css3添加前缀
         ]
       },
+      // {
+      //   test: /.js/, // 处理ES5
+      //   exclude: /node_modules/,
+      //   loader: 'babel-loader',
+      //   use: {
+      //     options: {
+      //       presets: ['@babel/preset-env']
+      //     }
+      //   }
+      // }
       {
-        test: /.js/, // 处理ES5
-        exclude: /node_modules/,
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', { modules:false }]
+            presets: ['@babel/preset-env']
           }
         }
       }
@@ -49,6 +59,11 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      template: './public/index.html'
+    }),
+    new webpack.DefinePlugin({
+      BASE_URL: JSON.stringify('./public/'), // 字符串代码片段
+    }) 
   ],
 }

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "webpack-dev-server --mode=development --config ./webpack.dev.js --env development --host 0.0.0.0",
+    "serve": "webpack-dev-server --config ./webpack.dev.js --env development --host 0.0.0.0",
     "build": "echo \"请使用 Webpack 实现此任务\"",
     "lint": "echo \"请使用 ESLint 实现此任务\""
   },
@@ -17,7 +17,7 @@
     "@vue/cli-plugin-babel": "^4.4.6",
     "autoprefixer": "^9.8.4",
     "babel-loader": "^8.1.0",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
     "copy-webpack-plugin": "^6.0.2",
     "css-loader": "^3.6.0",
     "dev-server": "^0.1.0",
