@@ -14,12 +14,10 @@ export default {
   components: {
     HelloWorld
   },
-  data() {
-    return{
+  data () {
+    return {
       src
     }
-      
-    
   }
 }
 </script>

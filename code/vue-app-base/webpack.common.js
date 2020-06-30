@@ -1,5 +1,5 @@
 // 公共的webpack配置
-const path = require('path'); 
+const path = require('path')
 const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -21,7 +21,7 @@ module.exports = {
         test: /.png$/, // 编译图片文件
         use: {
           loader: 'url-loader',
-          options: { 
+          options: {
             limit: '10240' // 10k以下使用url-loader处理为base64
           }
         }
@@ -35,16 +35,12 @@ module.exports = {
           'postcss-loader' // 为css3添加前缀
         ]
       },
-      // {
-      //   test: /.js/, // 处理ES5
-      //   exclude: /node_modules/,
-      //   loader: 'babel-loader',
-      //   use: {
-      //     options: {
-      //       presets: ['@babel/preset-env']
-      //     }
-      //   }
-      // }
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
+      },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
@@ -63,7 +59,7 @@ module.exports = {
       template: './public/index.html'
     }),
     new webpack.DefinePlugin({
-      BASE_URL: JSON.stringify('./public/'), // 字符串代码片段
-    }) 
-  ],
+      BASE_URL: JSON.stringify('./public/') // 字符串代码片段
+    })
+  ]
 }
